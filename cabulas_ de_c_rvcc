@@ -1,0 +1,218 @@
+Linguagem C
+
+A linguagem C, foi desenvolvida em 1972, nos Laboratórios Bell, por Dennis Ritchie, para o sistema operativo UNIX, é o resultado da evolução de uma linguagem de programação mais antiga, a BCPL, também conhecida como B, que rapidamente ganhou popularidade por ser uma linguagem flexível, portátil e eficiente, desenvolvida por programadores para programadores. C foi usada desde os jogos eletrónicos a controladores de satélites. E serviu de base as Linguagens C++ (que estende o C com abstrações para modularidade (classes, programação com objetos, tipos genéricos)), Java, C# e GO.
+
+Características Principais:
+-Linguagem relativamente pequena;
+-Baixo-nível, próxima do funcionamento da máquina;
+-Permissiva, permite ao programador controlo sobre a execução do computador.
+ 
+Vantagens de C:
+-Eficiente, permite controlar o uso de recursos (tempo e memoria);
+-Portátil, existem compiladores de C para praticamente todos os sistemas operativos e processadores;
+-Expressiva, permite operações ao nível da máquina;
+-Bibliotecas, são disponibilizadas bibliotecas externas com funções para I/O ou matemáticas;
+-Integração com o sistema UNIX
+ 
+Fundamentos da Linguagem C
+Programas em C são ficheiros de texto com extensão .c que para serem executados é necessário recorrer a um compilador que faz a “tradução para código-máquina”.
+Programa básico em C:
+ 
+#include<stdio.h>//carrrega um directive neste caso as funções de input, output ex: scanf e printf;
+#include<locale.h>//carrega um a biblioteca de línguas;
+ 
+int main(){//inicia a função principal ou main como esta não é void é necessário obter um return por parte do programa;
+    setlocale(LC_ALL,"Portuguese");// quer dizer que vamos usar a língua portuguesa
+    int x,y; //declaração de variáveis
+    printf("Introduza um número inteiro:"); //pedido ao utilizador
+    scanf("%d",&x); //o programa lê o valor introduzido pelo utilizador
+    y=x+1; //o programa faz este cálculo
+    printf("O número seguinte a %d"x" é: %d"y); //e devolve esta mensagem ao utilizador
+return(0); //fim do programa
+}
+​
+Breakdown do programa:
+Inicio:                                                      #include<stdio.h>
+                                                               #include <locale.h>
+                                                               int main (){
+                                                               setlocale(LC_ALL, "Portuguese");
+ 
+ 
+Fim:                                                        return(0);
+                                                               }
+ 
+Variáveis:                                               int x,y;                                    As variáveis podem ser do tipo:
+                                                                                                              (int, char, float) entre outras.
+ 
+Linha de comandos:                               printf("Introduza um número inteiro:");
+                                                               scanf("%d",&x);
+                                                               y=x+1;
+                                                               printf("O número seguinte a %d"x" é: %d"y);
+ 
+O que o programa vai executar está entre as duas {}.
+
+Cada linha de comandos é finalizada com ;
+                                           Por sua vez:       printf("")                           Mostra um texto ao utilizador.
+                                                                       scanf("%d",&x)                Lê o valor introduzido e guarda-o em x, (%d, %c, %f) para ler                                                                                                                variáveis do tipo (int, char, float) respetivamente.
+                                                                       y=x+1;                             Faz esta operação sabendo que o valor de x é igual ao                                                                                                                        valor introduzido pelo utilizador.
+                                                                                                               Operações: soma (+), subtração (-), multiplicação (*) e                                                                                                                          divisão (/).
+ 
+                                                                       printf("O número seguinte a %d"x" é: %d"y);
+                                                                                                               Mostra ao utilizador um texto com a resposta substituindo a                                                                                                                  variável x pelo valor introduzido pelo utilizador e y pelo valor                                                                                                                da operação.
+ 
+ 
+Outros elementos base da Linguagem que não abordamos acima C:
+
+Condições:                                                       Diferente(!=), Igual(==), Maior(>), Menor(<), (&&)e ou(||).
+Ciclos do-while:                                                do{
+                                                                         }while(condição);
+
+Se/se então/então:                                           If (condição) {
+                                                                         } else if (condição) {
+                                                                         }else{
+                                                                         }
+
+Ciclo for:                                                           for (i =origem; condição; ordem de crescimento) {
+                                                                         }
+Arredondar:                                                      Para cima (ceil() ), para baixo (floor())
+ 
+Soma Sucessiva:                                             i++ ou i= i+1;
+ 
+Números pares:                                               variável%2==0;
+ 
+Números ímpares:                                           variável%2!=0;
+ 
+Reduzir a casas decimais:                              %.xf em que x é o número de casas decimais
+ 
+Parar um ciclo                                                 break;
+ 
+Caracter Especial (\)                                       \7 Bell (sinal sonoro do computador);
+                                                                       \a Bell (sinal sonoro do computador);
+                                                                       \b Backspace (Retrocesso);
+                                                                       \n New Line (Mudança de linha);
+                                                                       \r Carriage Return
+                                                                       \t Tabulação Horizontal
+                                                                       \v Tabulação Vertical \
+                                                                       \ Carácter \
+                                                                       \’ Carácter ‘
+                                                                       \” Carácter “
+                                                                       \? Carácter ?
+Considerações finais, ainda não referidas acima:
+Um Bloco é formado por qualquer conjunto de instruções entre{ };
+A disposição do código é arbitrária e depende das preferências de cada programador;
+C faz distinção entre maiúsculas e minúsculas – pelo que é CaseSensitive;
+As Strings em C são delimitadas pelo carácter aspas “ ”;
+As linhas começadas por # não são C, mas antes diretivas ao compilador, por isso não devem terminar em;
+
+Programa que pergunta se quer personalizar o pack de equipamentos que vai comprar e calcula o custo:
+#include<stdio.h>
+#include<locale.h>
+
+int main(){
+    setlocale(LC_ALL,"Portuguese");
+    int persona,pac;
+    float tot;
+    do{
+    printf("Deseja personalizar todos os seus equipamentos?\n0- Não\n1- Sim.\n99- Sair.\n");
+    scanf("%d",&persona);
+    if(persona==0){
+        do{
+        printf("Qual o pack que pretende comprar:\n1- Equipamento de jogo | Preço: 25 EUR;\n2– Equipamento + Fato de Treino | Preço: 50 EUR;\n3– Ponto 2 + Pólos | Preço: 75 EUR;\n4– Ponto 3 + Calçado | Preço: 100 EUR.\n99- Sair.\n");
+        scanf("%d",&pac);
+        if(pac==1){
+            printf("Tem a pagar no total: 25 Eur.\n");
+            break;
+        }else if(pac==2){
+            printf("Tem a pagar no total: 50 Eur.\n");
+            break;
+        }else if(pac==3){
+            printf("Tem a pagar no total: 75 Eur.\n");
+            break;
+        }else if(pac==4){
+            printf("Tem a pagar no total: 100 Eur.\n");
+            break;
+        }else if(pac==99){
+        }else{
+            printf("Erro. Opção Inválida!!!\n");
+        }
+        }while(pac!=99);
+    }else if(persona==1){
+        do{
+        printf("Qual o pack que pretende comprar:\n1- Equipamento de jogo | Preço: 25 EUR;\n2– Equipamento + Fato de Treino | Preço: 50 EUR;\n3– Ponto 2 + Pólos | Preço: 75 EUR;\n4– Ponto 3 + Calçado | Preço: 100 EUR.\n99- Sair.\n");
+        scanf("%d",&pac);
+        if(pac==1){
+            tot=25+(pac*17.50);
+            printf("Tem a pagar no total: %.2f Eur.\n",tot);
+            break;
+        }else if(pac==2){
+            tot=50+(pac*17.50);
+            printf("Tem a pagar no total: %.2f Eur.\n",tot);
+            break;
+        }else if(pac==3){
+            tot=75+(pac*17.50);
+            printf("Tem a pagar no total: %.2f Eur.\n",tot);
+            break;
+        }else if(pac==4){
+            tot=100+(pac*17.50);
+            printf("Tem a pagar no total: %.2f Eur.\n",tot);
+            break;
+        }else if(pac==99){
+        }else{
+            printf("Erro. Opção Inválida!!!\n");
+        }
+        }while(pac!=99);
+    }else if(persona==99){
+        printf("Obrigado, por usar o nosso programa a sair.\n");
+    }else{
+        printf("Valor inserido inválido! Por favor volte a inserir.\n");
+    }
+    }while(persona!=99);
+return(0);
+}
+Programa que faz todas as tabuadas até á do número inserido pelo utilizador:
+#include<stdio.h>
+#include<locale.h>
+
+int main(){
+    setlocale(LC_ALL,"Portuguese");
+    int j=1,n,i,k;
+    printf("Até qual tabuada quer saber?");
+    scanf("%d",&n);
+    for(i=1;i<=10;i++){
+        for(k=1;k<=n;k++){
+        j=i*k;
+        if(k<n){
+        printf("%d x %d = %d,",k,i,j);
+        }else{
+        printf("%d x %d = %d",k,i,j);
+        }
+        }
+        printf("\n");
+    }
+return(0);
+}
+Calcular o valor do Parqueamento:
+#include<stdio.h>
+#include<locale.h>
+
+int main(){
+    setlocale(LC_ALL,"Portuguese");
+    int nhoras;
+    float vapagar;
+    printf("Introduza o nº de horas que esteve estacionado:");
+    scanf("%d",&nhoras);
+    if(nhoras<=3){
+        printf("Têm a pagar 3 Euros.");
+    }else if((nhoras>3)&&(nhoras<=48)){
+        vapagar=(nhoras-1)*1.5;
+        if(vapagar<20){
+            printf("Têm a pagar %.2f Euros.",vapagar);
+        }else{
+            printf("Têm a pagar 20 Euros.");
+        }
+    }else{
+        printf("Têm a pagar 20 Euros.\n");
+        printf("Aviso: O seu carro excedeu o tempo maximo de estacionamento.");
+    }
+    return(0);
+}
